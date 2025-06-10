@@ -31,31 +31,22 @@ Due to the class imbalance in the dataset—more non-recurrent cases than recurr
 
 - Re-evaluated the model on both the train and original test sets.
   
-# 🔍 Key Results and Insights
-**1) Optimal k Selection (Euclidean Distance):**  
+# 🔍 Results:
+| Metric    | Before SMOTE (Train Set) | After SMOTE (Train Set) |
+| --------- | ----------------------- | ---------------------- |
+| Precision | `0.34`                 | `0.7179`                |
+| Recall    | `0.49`                 | `0.6222`                |
+| F1 Score  | `0.40`                 | `0.6666`                |
+| AUC       | `0.6845`                 | `0.7675`                |  
 
-🔥 Best performing k = 4  
+| Metric    | Before SMOTE (Test Set) | After SMOTE (Test Set) |
+| --------- | ----------------------- | ---------------------- |
+| Precision | `0.42`                 | `0.0`                |
+| Recall    | `0.50`                 | `0.0`                |
+| F1 Score  | `0.45`                 | `0.0`                |
+| AUC       | `0.5862`                 | `0.6552`                |
 
-**Confusion Matrix & Metrics (k = 4):**  
-
-✅ True Positive Rate (Recall): 0.9857  
-✅ True Negative Rate: 0.8333  
-✅ Precision: 0.9324  
-✅ F1 Score: 0.9583  
-
-**2. Performance Across Distance Metrics (Unweighted KNN) with different values of k**  
-
-Minkowski with log-scaled p provides flexible control and performed best in this dataset with **test error of 0.06** at optimal **k-value = 1**  
-
-**3. Weighted KNN Results**  
-
-Euclidean performed best with **test error of 0.10** at optimal **k-value = 6**  
-
-Weighted KNN stabilizes performance across high k values but doesn’t outperform the best unweighted setup.  
-
-# Learning curve  
-
-![Learning Curve](https://github.com/user-attachments/assets/dbb45629-38ee-418e-8da5-76e20930a980)
+SMOTE did not help in this scenario as it made the model better at recognizing the synthetic oversampled minority class but failing on actual unseen minority-class samples. Alternative solutions like cost-sensitive learning, or hybrid approaches might be better for handling class imbalance while maintaining generalization.
 
 # 🛠️Technologies Used:  
 - Python
